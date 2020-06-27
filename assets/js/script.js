@@ -1,8 +1,15 @@
-var cityName = "San Francisco, CA"
+var currentWeather
 
-var mapquestUrl = "http://www.mapquestapi.com/geocoding/v1/address?key=CGM5S6mK5h8rGeCXOD165GEL39leUoI7&location=" + cityName
+var currentWeatherHandler = function () {
+    //append them children
+}
+
+var futureWeatherHandler = function () {
+    //append them children
+}
 
 var getLatLng = function () {
+    var mapquestUrl = "http://www.mapquestapi.com/geocoding/v1/address?key=CGM5S6mK5h8rGeCXOD165GEL39leUoI7&location=" + cityName
     fetch(mapquestUrl)
         .then(function (response) {
             if (response.ok) {
@@ -29,6 +36,7 @@ var getWeather = function () {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
+                    //clear all divs
                     console.log(data);
                     //Current Info
                     var cityName = cityName
@@ -55,4 +63,12 @@ var getWeather = function () {
 
 }
 
-getLatLng();
+//Get City name from form
+$("#cityInputForm").submit(function () {
+    event.preventDefault();
+    cityName = $("#cityInput").val().trim();
+    console.log(cityName);
+    getLatLng();
+})
+
+//Get city name from history

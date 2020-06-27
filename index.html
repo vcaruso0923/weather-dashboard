@@ -1,53 +1,111 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <nav class="navbar navbar-dark bg-dark text-light">
         <h1>Weather Dashboard</h1>
     </nav>
     <main class="row">
-        <div class="col-4 left-side row">
+        <div class="col-3 left-side row">
             <!-- Search Form -->
             <div class="col-12">
                 <h3>Search for a City:</h3>
                 <p class="font-italic">Enter city and state.<br> Example: San Francisco, CA</p>
-                <form>
-                    <input type="text"  id="cityInput" placeholder="San Francisco, CA" autocomplete="off"/>
-                    <button type="button" class="btn btn-primary">Search</button>
+                <form id="cityInputForm">
+                    <input type="text" id="cityInput" placeholder="San Francisco, CA" autocomplete="off" />
+                    <button type="submit" class="btn btn-primary" id=cityInputButton>Search</button>
                 </form>
             </div>
             <!-- Search History -->
             <ul class="list-group col-12">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
+            </ul>
         </div>
 
-        <div class="col-8 right-side row">
+        <div class="col-9 right-side row">
+            <!-- Current Weather Div -->
+            <h2>Current Weather:</h2>
             <div class="col-12" id="currentWeather">
-                <h2>Current Weather:</h2>
+                <h3 id="cityName">City/Town Name:</h3>
+                <span id="currentIcon"></span>
+                <p id="currentTemp">Temperature:</p>
+                <p id="currentHum">Humidity:</p>
+                <p id="currentWind">Wind Speed:</p>
+                <p id="currentUV">UV Index:</p>
             </div>
-            <div class="col-12 row" id="forecast">
-                <h2>5-Day Forecast:</h2>
+            <!-- Future Weather Div -->
+            <h2>5-Day Forecast:</h2>
+            <div class="col-12 row justify-content-around" id="forecast">
+                <div class="card text-white bg-primary mb-3 col-2" style="max-width: 18rem;">
+                    <div class="card-header" id="futureDateOne">Date</div>
+                    <div>
+                        <span id="futureIconOne"></span>
+                        <p class="card-text" id="futureTempOne">Temp:</p>
+                        <p class="card-text" id=futureHumOne>Humidity:</p>
+                    </div>
+                </div>
+                
+                <div class="card text-white bg-primary mb-3 col-2" style="max-width: 18rem;">
+                    <div class="card-header" id="futureDateTwo">Date</div>
+                    <div>
+                        <span id="futureIconTwo"></span>
+                        <p class="card-text" id="futureTempTwo">Temp:</p>
+                        <p class="card-text" id=futureHumTwo>Humidity:</p>
+                    </div>
+                </div>
+
+                <div class="card text-white bg-primary mb-3 col-2" style="max-width: 18rem;">
+                    <div class="card-header" id="futureDateThree">Date</div>
+                    <div>
+                        <span id="futureIconThree"></span>
+                        <p class="card-text" id="futureTempThree">Temp:</p>
+                        <p class="card-text" id=futureHumThree>Humidity:</p>
+                    </div>
+                </div>
+
+                <div class="card text-white bg-primary mb-3 col-2" style="max-width: 18rem;">
+                    <div class="card-header" id="futureDateFour">Date</div>
+                    <div>
+                        <span id="futureIconFour"></span>
+                        <p class="card-text" id="futureTempFour">Temp:</p>
+                        <p class="card-text" id=futureHumFour>Humidity:</p>
+                    </div>
+                </div>
+
+                <div class="card text-white bg-primary mb-3 col-2" style="max-width: 18rem;">
+                    <div class="card-header" id="futureDateFive">Date</div>
+                    <div>
+                        <span id="futureIconOne"></span>
+                        <p class="card-text" id="futureTempFive">Temp:</p>
+                        <p class="card-text" id=futureHumFive>Humidity:</p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
-  </body>
+</body>
+
 </html>
