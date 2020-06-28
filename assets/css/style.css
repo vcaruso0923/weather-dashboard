@@ -2,13 +2,34 @@ main {
     padding: 25px;
 }
 
+.right-side {
+    padding-left: 4rem;
+}
+
+.left-side {
+    padding-right: 4rem;
+}
+
 .list-group {
- padding-top: 20px;
+    padding-top: 10px;
+    height:200px;
+    overflow:hidden; overflow-y:scroll;
+}
+
+#list-group-container {
+    padding-top: 20px;
+    padding-left: -30px;
+    border-top: 2px solid rgba(0,0,0,0.1);
 }
 
 #currentWeather {
     border: 2px solid rgba(0,0,0,0.1);
     border-radius: 5px;
+}
+
+#cityInputButton {
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .currentWeatherHeader {
@@ -37,7 +58,7 @@ main {
 }
 
 #currentIcon {
-    border: 5px solid rgba(61, 130, 198, 0.5);
+    background-color: rgb(0,123,255);
     border-radius: 5px;
     margin-bottom: 16px;
 }
@@ -48,4 +69,12 @@ main {
 #futureHumFour,
 #futureHumFive {
     margin-bottom: 1rem;
+}
+
+#futureDateOne,
+#futureDateTwo,
+#futureDateThree,
+#futureDateFour,
+#futureDateFive {
+    font-weight: bold;
 }

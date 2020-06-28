@@ -162,4 +162,4 @@ $("#list-group-container ul").click(function(event) {
 var showContent = function () {
     $(".right-side").show();
     $("#list-group-container").show()
-}
+};
