@@ -14,3 +14,24 @@ main {
 .currentWeatherHeader {
     padding-left: 30px;
 }
+
+.list-group-item:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+
+#currentUV {
+    padding-right: 1px;
+    margin-right: 1px;
+}
+
+.high-uv {
+    background-color: rgba(242, 12, 12, 0.5);
+}
+
+.moderate-uv {
+    background-color: rgba(253, 253, 16, 0.8);
+}
+
+.low-uv {
+    background-color: rgba(14, 189, 14, 0.5);
+}

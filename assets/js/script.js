@@ -1,8 +1,3 @@
-var currentWeather
-
-var currentWeatherHandler = function () {
-    //append them children
-}
 
 var getLatLng = function () {
     var mapquestUrl = "http://www.mapquestapi.com/geocoding/v1/address?key=CGM5S6mK5h8rGeCXOD165GEL39leUoI7&location=" + cityName
@@ -24,6 +19,7 @@ var getLatLng = function () {
         })
 }
 
+//put data on the page
 var getWeather = function () {
 
     var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?" + latLng + "&exclude=hourly,minutely&appid=7402dbd1ea9b7f290130809de84fd4b5&units=imperial"
@@ -50,7 +46,16 @@ var getWeather = function () {
                     $("#currentTemp").text("Temp: " + Math.floor(data.current.temp));
                     $("#currentHum").text("Hum: " + data.current.humidity)
                     $("#currentWind").text("Wind Speed: " + data.current.wind_speed)
-                    $("#currentUV").text("UV Index: " + data.current.uvi)                   
+                    $("#currentUV").text("UV Index: " + data.current.uvi) 
+                    // var uvNumber = parseInt(data.current.uvi)    
+                    var uvNumber = 3.5          
+                    if (uvNumber > 5.00) {
+                        $("#currentUV").attr("class", "high-uv")
+                    } else if (3.00 > uvNumber) {
+                        $("#currentUV").attr("class", "low-uv")
+                    } else {
+                        $("#currentUV").attr("class", "moderate-uv")
+                    }
                     
                     $("#futureDateOne").text(moment.unix(data.daily[0].dt).format("l"));
                     var futureCloudsOne = parseInt(data.daily[0].clouds)
