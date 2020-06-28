@@ -12,10 +12,13 @@
 </head>
 
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-dark bg-dark text-light">
         <h1>Weather Dashboard</h1>
     </nav>
     <main class="row">
+
+        <!-- Search Form and History -->
         <div class="col-md-3 col-12 left-side row">
 
             <!-- Search Form -->
@@ -27,26 +30,29 @@
                     <button type="submit" class="btn btn-primary" id=cityInputButton>Search</button>
                 </form>
             </div>
-            
+
             <!-- Search History -->
             <div class="col-12" id="list-group-container">
                 <h4>Search History:</h4>
                 <ul class="list-group col-12">
                 </ul>
-            </div>    
+            </div>
         </div>
 
+        <!-- Current Weather Div -->
         <div class="col-md-9 col-12 right-side row">
-            <!-- Current Weather Div -->
             <h2 id="currentWeatherHeader">Current Weather:</h2>
-            <div class="col-12" id="currentWeather">
-                <h3 id="cityName"></h3>
-                <span><img id="currentIcon"></span>
-                <p id="currentTemp"></p>
-                <p id="currentHum"></p>
-                <p id="currentWind"></p>
-                <span id="currentUV"></span>
+            <div class="row col-12" id="currentWeatherContainer">
+                <div class="col-12" id="currentWeather">
+                    <h3 id="cityName"></h3>
+                    <span><img id="currentIcon"></span>
+                    <p id="currentTemp"></p>
+                    <p id="currentHum"></p>
+                    <p id="currentWind"></p>
+                    <span id="currentUV"></span>
+                </div>
             </div>
+
             <!-- Future Weather Div -->
             <h2>5-Day Forecast:</h2>
             <div class="col-12 row justify-content-around" id="forecast">

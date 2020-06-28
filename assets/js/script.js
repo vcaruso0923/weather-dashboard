@@ -1,4 +1,4 @@
-var hideContent = function() {
+var hideContent = function () {
     $(".right-side").hide();
     $("#list-group-container").hide()
 }
@@ -22,13 +22,14 @@ var getLatLng = function () {
         .catch(function (error) {
             alert("Unable to connect to MapQuest!")
         })
+
 }
 
 //put data on the page
 var getWeather = function () {
 
     var weatherURL = "https://api.openweathermap.org/data/2.5/onecall?" + latLng + "&exclude=hourly,minutely&appid=7402dbd1ea9b7f290130809de84fd4b5&units=imperial"
-    
+
     fetch(weatherURL)
         .then(function (response) {
             if (response.ok) {
@@ -42,15 +43,15 @@ var getWeather = function () {
                     } else if (currentClouds > 70) {
                         $("#currentIcon").attr("src", "./assets/icons/cloudy.svg")
                     } else if (69 > currentClouds > 20) {
-                        $("#currentIcon").attr("src", "./assets/icons/partly-cloudy.svg")              
+                        $("#currentIcon").attr("src", "./assets/icons/partly-cloudy.svg")
                     } else {
                         $("#currentIcon").attr("src", "./assets/icons/sunny.svg")
                     }
                     $("#currentTemp").text("Temp: " + Math.floor(data.current.temp));
                     $("#currentHum").text("Hum: " + data.current.humidity)
                     $("#currentWind").text("Wind Speed: " + data.current.wind_speed)
-                    $("#currentUV").text("UV Index: " + data.current.uvi) 
-                    var uvNumber = parseInt(data.current.uvi)    
+                    $("#currentUV").text("UV Index: " + data.current.uvi)
+                    var uvNumber = parseInt(data.current.uvi)
                     if (uvNumber > 5.00) {
                         $("#currentUV").attr("class", "high-uv")
                     } else if (3.00 > uvNumber) {
@@ -58,7 +59,7 @@ var getWeather = function () {
                     } else {
                         $("#currentUV").attr("class", "moderate-uv")
                     }
-                    
+
                     $("#futureDateOne").text(moment.unix(data.daily[0].dt).format("MMM Do"));
                     var futureCloudsOne = parseInt(data.daily[0].clouds)
                     if (data.daily[0].weather[0].main === "Rain") {
@@ -66,27 +67,27 @@ var getWeather = function () {
                     } else if (futureCloudsOne > 70) {
                         $("#futureIconOne").attr("src", "./assets/icons/cloudy.svg")
                     } else if (69 > futureCloudsOne > 25) {
-                        $("#futureIconOne").attr("src", "./assets/icons/partly-cloudy.svg")              
+                        $("#futureIconOne").attr("src", "./assets/icons/partly-cloudy.svg")
                     } else {
                         $("#futureIconOne").attr("src", "./assets/icons/sunny.svg")
                     }
                     $("#futureTempOne").text("Temp: " + Math.floor((data.daily[0].temp.max + data.daily[0].temp.min) / 2));
                     $("#futureHumOne").text("Hum: " + data.daily[0].humidity)
-                    
-                        $("#futureDateTwo").text(moment.unix(data.daily[1].dt).format("MMM Do"));
-                        var futureCloudsTwo = parseInt(data.daily[1].clouds)
-                        if (data.daily[1].weather[0].main === "Rain") {
-                            $("#futureIconTwo").attr("src", "./assets/icons/rainy.svg")
-                        } else if (futureCloudsTwo > 70) {
-                            $("#futureIconTwo").attr("src", "./assets/icons/cloudy.svg")
-                        } else if (69 > futureCloudsTwo > 25) {
-                            $("#futureIconTwo").attr("src", "./assets/icons/partly-cloudy.svg")              
-                        } else {
-                            $("#futureIconTwo").attr("src", "./assets/icons/sunny.svg")
-                        }
-                        $("#futureTempTwo").text("Temp: " + Math.floor((data.daily[1].temp.max + data.daily[1].temp.min) / 2));
-                        $("#futureHumTwo").text("Hum: " + data.daily[1].humidity)
-                    
+
+                    $("#futureDateTwo").text(moment.unix(data.daily[1].dt).format("MMM Do"));
+                    var futureCloudsTwo = parseInt(data.daily[1].clouds)
+                    if (data.daily[1].weather[0].main === "Rain") {
+                        $("#futureIconTwo").attr("src", "./assets/icons/rainy.svg")
+                    } else if (futureCloudsTwo > 70) {
+                        $("#futureIconTwo").attr("src", "./assets/icons/cloudy.svg")
+                    } else if (69 > futureCloudsTwo > 25) {
+                        $("#futureIconTwo").attr("src", "./assets/icons/partly-cloudy.svg")
+                    } else {
+                        $("#futureIconTwo").attr("src", "./assets/icons/sunny.svg")
+                    }
+                    $("#futureTempTwo").text("Temp: " + Math.floor((data.daily[1].temp.max + data.daily[1].temp.min) / 2));
+                    $("#futureHumTwo").text("Hum: " + data.daily[1].humidity)
+
                     $("#futureDateThree").text(moment.unix(data.daily[2].dt).format("MMM Do"));
                     var futureCloudsThree = parseInt(data.daily[2].clouds)
                     if (data.daily[2].weather[0].main === "Rain") {
@@ -94,27 +95,27 @@ var getWeather = function () {
                     } else if (futureCloudsThree > 70) {
                         $("#futureIconThree").attr("src", "./assets/icons/cloudy.svg")
                     } else if (69 > futureCloudsThree > 25) {
-                        $("#futureIconThree").attr("src", "./assets/icons/partly-cloudy.svg")              
+                        $("#futureIconThree").attr("src", "./assets/icons/partly-cloudy.svg")
                     } else {
                         $("#futureIconThree").attr("src", "./assets/icons/sunny.svg")
                     }
                     $("#futureTempThree").text("Temp: " + Math.floor((data.daily[2].temp.max + data.daily[2].temp.min) / 2));
                     $("#futureHumThree").text("Hum: " + data.daily[2].humidity)
-                    
-                        $("#futureDateFour").text(moment.unix(data.daily[3].dt).format("MMM Do"));
-                        var futureCloudsFour = parseInt(data.daily[3].clouds)
-                        if (data.daily[3].weather[0].main === "Rain") {
-                            $("#futureIconFour").attr("src", "./assets/icons/rainy.svg")
-                        } else if (futureCloudsFour > 70) {
-                            $("#futureIconFour").attr("src", "./assets/icons/cloudy.svg")
-                        } else if (69 > futureCloudsFour > 25) {
-                            $("#futureIconFour").attr("src", "./assets/icons/partly-cloudy.svg")              
-                        } else {
-                            $("#futureIconFour").attr("src", "./assets/icons/sunny.svg")
-                        }
-                        $("#futureTempFour").text("Temp: " + Math.floor((data.daily[3].temp.max + data.daily[3].temp.min) / 2));
-                        $("#futureHumFour").text("Hum: " + data.daily[3].humidity)
-                    
+
+                    $("#futureDateFour").text(moment.unix(data.daily[3].dt).format("MMM Do"));
+                    var futureCloudsFour = parseInt(data.daily[3].clouds)
+                    if (data.daily[3].weather[0].main === "Rain") {
+                        $("#futureIconFour").attr("src", "./assets/icons/rainy.svg")
+                    } else if (futureCloudsFour > 70) {
+                        $("#futureIconFour").attr("src", "./assets/icons/cloudy.svg")
+                    } else if (69 > futureCloudsFour > 25) {
+                        $("#futureIconFour").attr("src", "./assets/icons/partly-cloudy.svg")
+                    } else {
+                        $("#futureIconFour").attr("src", "./assets/icons/sunny.svg")
+                    }
+                    $("#futureTempFour").text("Temp: " + Math.floor((data.daily[3].temp.max + data.daily[3].temp.min) / 2));
+                    $("#futureHumFour").text("Hum: " + data.daily[3].humidity)
+
                     $("#futureDateFive").text(moment.unix(data.daily[4].dt).format("MMM Do"));
                     var futureCloudsFive = parseInt(data.daily[4].clouds)
                     if (data.daily[4].weather[0].main === "Rain") {
@@ -122,7 +123,7 @@ var getWeather = function () {
                     } else if (futureCloudsFive > 70) {
                         $("#futureIconFive").attr("src", "./assets/icons/cloudy.svg")
                     } else if (69 > futureCloudsFive > 25) {
-                        $("#futureIconFive").attr("src", "./assets/icons/partly-cloudy.svg")              
+                        $("#futureIconFive").attr("src", "./assets/icons/partly-cloudy.svg")
                     } else {
                         $("#futureIconFive").attr("src", "./assets/icons/sunny.svg")
                     }
@@ -151,7 +152,7 @@ $("#cityInputForm").submit(function () {
 })
 
 //Get city name from history
-$("#list-group-container ul").click(function(event) {
+$("#list-group-container ul").click(function (event) {
     event.preventDefault();
     cityName = $(event.target).text();
     getLatLng();

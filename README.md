@@ -1,4 +1,4 @@
-
+#Weather Dashboard
 
 When I search for a city,
 then I am presented with current and future conditions for that city and that city is added to the search history.

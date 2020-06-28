@@ -22,9 +22,12 @@ main {
     border-top: 2px solid rgba(0,0,0,0.1);
 }
 
-#currentWeather {
+#currentWeatherContainer {
     border: 2px solid rgba(0,0,0,0.1);
     border-radius: 5px;
+}
+#currentWeather {
+    padding-bottom: 10px;
 }
 
 #cityInputButton {
@@ -47,14 +50,17 @@ main {
 
 .high-uv {
     background-color: rgba(242, 12, 12, 0.5);
+    border-radius: 5px;
 }
 
 .moderate-uv {
     background-color: rgba(253, 253, 16, 0.8);
+    border-radius: 5px;
 }
 
 .low-uv {
     background-color: rgba(14, 189, 14, 0.5);
+    border-radius: 5px;
 }
 
 #currentIcon {
