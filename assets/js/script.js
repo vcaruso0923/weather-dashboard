@@ -47,7 +47,7 @@ var getWeather = function () {
                         $("#currentIcon").attr("src", "./assets/icons/sunny.svg")
                     }
                     $("#currentTemp").text("Temp: " + Math.floor(data.current.temp));
-                    $("#currentHum").text("Hum: " + data.current.humidity)
+                    $("#currentHum").text("Humidity: " + data.current.humidity)
                     $("#currentWind").text("Wind Speed: " + data.current.wind_speed)
                     $("#currentUV").text("UV Index: " + data.current.uvi)
                     var uvNumber = parseInt(data.current.uvi)
