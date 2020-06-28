@@ -1,4 +1,8 @@
-#Weather Dashboard
+# Weather Dashboard
+
+(https://vcaruso0923.github.io/weather-dashboard/)
+
+## Acceptance Criteria
 
 When I search for a city,
 then I am presented with current and future conditions for that city and that city is added to the search history.
@@ -14,3 +18,7 @@ then I am presented with a 5-day forecast that displays the date, an icon repres
 
 When I click on a city in the search history,
 then I am again presented with current and future conditions for that city
+
+The following screenshot demonstrates the application functionality:
+
+![Daily Planner](./assets/images/demo.PNG)
