@@ -1,6 +1,5 @@
 var hideContent = function () {
     $(".right-side").hide();
-    $("#list-group-container").hide()
 }
 hideContent();
 
@@ -147,6 +146,13 @@ $("#cityInputForm").submit(function () {
 
     //add entered city to list
     $(".list-group").append('<li class="list-group-item">' + cityName + '</li>')
+
+    var listContents = [];
+    $("ul").each(function(){
+       listContents.push(this.innerHTML);
+    })
+    localStorage.setItem('todoList', JSON.stringify(listContents));
+
     getLatLng();
     showContent();
 })
@@ -162,5 +168,14 @@ $("#list-group-container ul").click(function (event) {
 //show Content on render
 var showContent = function () {
     $(".right-side").show();
-    $("#list-group-container").show()
 };
+
+function loadStorage() {
+    if (localStorage.getItem('todoList')){
+        var listContents = JSON.parse(localStorage.getItem('todoList'));
+        $("ul").each(function(i){
+          this.innerHTML = listContents [i];
+        })
+    }
+}
+loadStorage();
