@@ -32,73 +32,92 @@ var getWeather = function () {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    //clear all divs
+                    //clear all divs?
+                    //show page
                     console.log(data)
-                    var cityName = cityName
-                    var currentDate = moment.unix(data.current.dt).format("l")
+
+                    $("#cityName").text(cityName + " - " + moment.unix(data.current.dt).format("l"))
                     var currentClouds = parseInt(data.current.clouds)
-                    var currentTemp = Math.floor(data.current.temp)
-                    var currentHum = data.current.humidity
-                    var currentWind = data.current.wind_speed
-                    var currentUV = data.current.uvi
-                    
+                    if (data.current.weather[0].main === "Rain") {
+                        $("#currentIcon").attr("src", "./assets/icons/rainy.svg")
+                    } else if (currentClouds > 70) {
+                        $("#currentIcon").attr("src", "./assets/icons/cloudy.svg")
+                    } else if (69 > currentClouds > 20) {
+                        $("#currentIcon").attr("src", "./assets/icons/partly-cloudy.svg")              
+                    } else {
+                        $("#currentIcon").attr("src", "./assets/icons/sunny.svg")
+                    }
+                    $("#currentTemp").text("Temp: " + Math.floor(data.current.temp));
+                    $("#currentHum").text("Hum: " + data.current.humidity)
+                    $("#currentWind").text("Wind Speed: " + data.current.wind_speed)
+                    $("#currentUV").text("UV Index: " + data.current.uvi)                   
                     
                     $("#futureDateOne").text(moment.unix(data.daily[0].dt).format("l"));
                     var futureCloudsOne = parseInt(data.daily[0].clouds)
-                    if (futureCloudsOne > 70) {
-                        // $("#futureIconOne") cloudy icon 
+                    if (data.daily[0].weather[0].main === "Rain") {
+                        $("#futureIconOne").attr("src", "./assets/icons/rainy.svg")
+                    } else if (futureCloudsOne > 70) {
+                        $("#futureIconOne").attr("src", "./assets/icons/cloudy.svg")
                     } else if (69 > futureCloudsOne > 25) {
-                        // $("#futureIconOne") partly cloudy icon
+                        $("#futureIconOne").attr("src", "./assets/icons/partly-cloudy.svg")              
                     } else {
-                        // $("#futureIconOne") Sunny Icon
+                        $("#futureIconOne").attr("src", "./assets/icons/sunny.svg")
                     }
                     $("#futureTempOne").text("Temp: " + Math.floor((data.daily[0].temp.max + data.daily[0].temp.min) / 2));
                     $("#futureHumOne").text("Hum: " + data.daily[0].humidity)
                     
                         $("#futureDateTwo").text(moment.unix(data.daily[1].dt).format("l"));
                         var futureCloudsTwo = parseInt(data.daily[1].clouds)
-                        if (futureCloudsTwo > 70) {
-                            // $("#futureIconTwo") cloudy icon 
+                        if (data.daily[1].weather[0].main === "Rain") {
+                            $("#futureIconTwo").attr("src", "./assets/icons/rainy.svg")
+                        } else if (futureCloudsTwo > 70) {
+                            $("#futureIconTwo").attr("src", "./assets/icons/cloudy.svg")
                         } else if (69 > futureCloudsTwo > 25) {
-                            // $("#futureIconTwo") partly cloudy icon
+                            $("#futureIconTwo").attr("src", "./assets/icons/partly-cloudy.svg")              
                         } else {
-                            // $("#futureIconTwo") Sunny Icon
+                            $("#futureIconTwo").attr("src", "./assets/icons/sunny.svg")
                         }
                         $("#futureTempTwo").text("Temp: " + Math.floor((data.daily[1].temp.max + data.daily[1].temp.min) / 2));
                         $("#futureHumTwo").text("Hum: " + data.daily[1].humidity)
                     
                     $("#futureDateThree").text(moment.unix(data.daily[2].dt).format("l"));
                     var futureCloudsThree = parseInt(data.daily[2].clouds)
-                    if (futureCloudsThree > 70) {
-                        // $("#futureIconThree") cloudy icon 
+                    if (data.daily[2].weather[0].main === "Rain") {
+                        $("#futureIconThree").attr("src", "./assets/icons/rainy.svg")
+                    } else if (futureCloudsThree > 70) {
+                        $("#futureIconThree").attr("src", "./assets/icons/cloudy.svg")
                     } else if (69 > futureCloudsThree > 25) {
-                        // $("#futureIconThree") partly cloudy icon
+                        $("#futureIconThree").attr("src", "./assets/icons/partly-cloudy.svg")              
                     } else {
-                        // $("#futureIconThree") Sunny Icon
+                        $("#futureIconThree").attr("src", "./assets/icons/sunny.svg")
                     }
                     $("#futureTempThree").text("Temp: " + Math.floor((data.daily[2].temp.max + data.daily[2].temp.min) / 2));
                     $("#futureHumThree").text("Hum: " + data.daily[2].humidity)
                     
                         $("#futureDateFour").text(moment.unix(data.daily[3].dt).format("l"));
                         var futureCloudsFour = parseInt(data.daily[3].clouds)
-                        if (futureCloudsFour > 70) {
-                            // $("#futureIconFour") cloudy icon 
+                        if (data.daily[3].weather[0].main === "Rain") {
+                            $("#futureIconFour").attr("src", "./assets/icons/rainy.svg")
+                        } else if (futureCloudsFour > 70) {
+                            $("#futureIconFour").attr("src", "./assets/icons/cloudy.svg")
                         } else if (69 > futureCloudsFour > 25) {
-                            // $("#futureIconFour") partly cloudy icon
+                            $("#futureIconFour").attr("src", "./assets/icons/partly-cloudy.svg")              
                         } else {
-                            // $("#futureIconFour") Sunny Icon
+                            $("#futureIconFour").attr("src", "./assets/icons/sunny.svg")
                         }
                         $("#futureTempFour").text("Temp: " + Math.floor((data.daily[3].temp.max + data.daily[3].temp.min) / 2));
                         $("#futureHumFour").text("Hum: " + data.daily[3].humidity)
                     
                     $("#futureDateFive").text(moment.unix(data.daily[4].dt).format("l"));
                     var futureCloudsFive = parseInt(data.daily[4].clouds)
-                    if (futureCloudsFive > 70) {
-                        // $("#futureIconFive") cloudy icon 
+                    if (data.daily[4].weather[0].main === "Rain") {
+                        $("#futureIconFive").attr("src", "./assets/icons/rainy.svg")
+                    } else if (futureCloudsFive > 70) {
+                        $("#futureIconFive").attr("src", "./assets/icons/cloudy.svg")
                     } else if (69 > futureCloudsFive > 25) {
-                        // $("#futureIconFive") partly cloudy icon
+                        $("#futureIconFive").attr("src", "./assets/icons/partly-cloudy.svg")              
                     } else {
-                        // $("#futureIconFive") Sunny Icon
+                        $("#futureIconFive").attr("src", "./assets/icons/sunny.svg")
                     }
                     $("#futureTempFive").text("Temp: " + Math.floor((data.daily[4].temp.max + data.daily[4].temp.min) / 2));
                     $("#futureHumFive").text("Hum: " + data.daily[4].humidity)
@@ -113,7 +132,7 @@ var getWeather = function () {
 
 }
 
-//Get City name from form
+//Get City name from input
 $("#cityInputForm").submit(function () {
     event.preventDefault();
     cityName = $("#cityInput").val().trim();
