@@ -136,11 +136,17 @@ var getWeather = function () {
 $("#cityInputForm").submit(function () {
     event.preventDefault();
     cityName = $("#cityInput").val().trim();
-    console.log(cityName);
-    //display main content
+
+    //add entered city to list
+    $(".list-group").append('<li class="list-group-item">' + cityName + '</li>')
     getLatLng();
 })
 
 //Get city name from history
+$("#list-group-container ul").click(function(event) {
+    event.preventDefault();
+    cityName = $(event.target).text();
+    getLatLng();
+});
 
 //Hide main content on load

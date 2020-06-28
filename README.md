@@ -12,6 +12,4 @@ When I view future weather conditions for that city,
 then I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity.
 
 When I click on a city in the search history,
-then I am again presented with current and future conditions for that city# weather-dashboard.
-
-	CGM5S6mK5h8rGeCXOD165GEL39leUoI7
+then I am again presented with current and future conditions for that city
