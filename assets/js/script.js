@@ -1,3 +1,8 @@
+var hideContent = function() {
+    $(".right-side").hide();
+    $("#list-group-container").hide()
+}
+hideContent();
 
 var getLatLng = function () {
     var mapquestUrl = "http://www.mapquestapi.com/geocoding/v1/address?key=CGM5S6mK5h8rGeCXOD165GEL39leUoI7&location=" + cityName
@@ -30,9 +35,7 @@ var getWeather = function () {
                 response.json().then(function (data) {
                     //clear all divs?
                     //show page
-                    console.log(data)
-
-                    $("#cityName").text(cityName + " - " + moment.unix(data.current.dt).format("l"))
+                    $("#cityName").text(cityName + " - " + moment.unix(data.current.dt).format("MMM Do YYYY"))
                     var currentClouds = parseInt(data.current.clouds)
                     if (data.current.weather[0].main === "Rain") {
                         $("#currentIcon").attr("src", "./assets/icons/rainy.svg")
@@ -47,8 +50,7 @@ var getWeather = function () {
                     $("#currentHum").text("Hum: " + data.current.humidity)
                     $("#currentWind").text("Wind Speed: " + data.current.wind_speed)
                     $("#currentUV").text("UV Index: " + data.current.uvi) 
-                    // var uvNumber = parseInt(data.current.uvi)    
-                    var uvNumber = 3.5          
+                    var uvNumber = parseInt(data.current.uvi)    
                     if (uvNumber > 5.00) {
                         $("#currentUV").attr("class", "high-uv")
                     } else if (3.00 > uvNumber) {
@@ -57,7 +59,7 @@ var getWeather = function () {
                         $("#currentUV").attr("class", "moderate-uv")
                     }
                     
-                    $("#futureDateOne").text(moment.unix(data.daily[0].dt).format("l"));
+                    $("#futureDateOne").text(moment.unix(data.daily[0].dt).format("MMM Do"));
                     var futureCloudsOne = parseInt(data.daily[0].clouds)
                     if (data.daily[0].weather[0].main === "Rain") {
                         $("#futureIconOne").attr("src", "./assets/icons/rainy.svg")
@@ -71,7 +73,7 @@ var getWeather = function () {
                     $("#futureTempOne").text("Temp: " + Math.floor((data.daily[0].temp.max + data.daily[0].temp.min) / 2));
                     $("#futureHumOne").text("Hum: " + data.daily[0].humidity)
                     
-                        $("#futureDateTwo").text(moment.unix(data.daily[1].dt).format("l"));
+                        $("#futureDateTwo").text(moment.unix(data.daily[1].dt).format("MMM Do"));
                         var futureCloudsTwo = parseInt(data.daily[1].clouds)
                         if (data.daily[1].weather[0].main === "Rain") {
                             $("#futureIconTwo").attr("src", "./assets/icons/rainy.svg")
@@ -85,7 +87,7 @@ var getWeather = function () {
                         $("#futureTempTwo").text("Temp: " + Math.floor((data.daily[1].temp.max + data.daily[1].temp.min) / 2));
                         $("#futureHumTwo").text("Hum: " + data.daily[1].humidity)
                     
-                    $("#futureDateThree").text(moment.unix(data.daily[2].dt).format("l"));
+                    $("#futureDateThree").text(moment.unix(data.daily[2].dt).format("MMM Do"));
                     var futureCloudsThree = parseInt(data.daily[2].clouds)
                     if (data.daily[2].weather[0].main === "Rain") {
                         $("#futureIconThree").attr("src", "./assets/icons/rainy.svg")
@@ -99,7 +101,7 @@ var getWeather = function () {
                     $("#futureTempThree").text("Temp: " + Math.floor((data.daily[2].temp.max + data.daily[2].temp.min) / 2));
                     $("#futureHumThree").text("Hum: " + data.daily[2].humidity)
                     
-                        $("#futureDateFour").text(moment.unix(data.daily[3].dt).format("l"));
+                        $("#futureDateFour").text(moment.unix(data.daily[3].dt).format("MMM Do"));
                         var futureCloudsFour = parseInt(data.daily[3].clouds)
                         if (data.daily[3].weather[0].main === "Rain") {
                             $("#futureIconFour").attr("src", "./assets/icons/rainy.svg")
@@ -113,7 +115,7 @@ var getWeather = function () {
                         $("#futureTempFour").text("Temp: " + Math.floor((data.daily[3].temp.max + data.daily[3].temp.min) / 2));
                         $("#futureHumFour").text("Hum: " + data.daily[3].humidity)
                     
-                    $("#futureDateFive").text(moment.unix(data.daily[4].dt).format("l"));
+                    $("#futureDateFive").text(moment.unix(data.daily[4].dt).format("MMM Do"));
                     var futureCloudsFive = parseInt(data.daily[4].clouds)
                     if (data.daily[4].weather[0].main === "Rain") {
                         $("#futureIconFive").attr("src", "./assets/icons/rainy.svg")
@@ -145,6 +147,7 @@ $("#cityInputForm").submit(function () {
     //add entered city to list
     $(".list-group").append('<li class="list-group-item">' + cityName + '</li>')
     getLatLng();
+    showContent();
 })
 
 //Get city name from history
@@ -152,6 +155,11 @@ $("#list-group-container ul").click(function(event) {
     event.preventDefault();
     cityName = $(event.target).text();
     getLatLng();
+    showContent();
 });
 
-//Hide main content on load
+//show Content on render
+var showContent = function () {
+    $(".right-side").show();
+    $("#list-group-container").show()
+}

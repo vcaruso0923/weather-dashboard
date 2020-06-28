@@ -35,3 +35,17 @@ main {
 .low-uv {
     background-color: rgba(14, 189, 14, 0.5);
 }
+
+#currentIcon {
+    border: 5px solid rgba(61, 130, 198, 0.5);
+    border-radius: 5px;
+    margin-bottom: 16px;
+}
+
+#futureHumOne, 
+#futureHumTwo, 
+#futureHumThree, 
+#futureHumFour,
+#futureHumFive {
+    margin-bottom: 1rem;
+}
