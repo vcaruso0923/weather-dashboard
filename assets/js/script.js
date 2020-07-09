@@ -19,7 +19,7 @@ var getLatLng = function () {
             }
         })
         .catch(function (error) {
-            alert("Unable to connect to MapQuest!")
+            alert("Unable to connect to MapQuest! Probably too many requests this month...")
         })
 
 }
