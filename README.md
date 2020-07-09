@@ -1,6 +1,10 @@
 # Weather Dashboard
 
-(https://vcaruso0923.github.io/weather-dashboard/)
+## Overview
+An app to view todays weather as well as the forecast for the next few days for any city in the world.
+
+## Link
+https://vcaruso0923.github.io/weather-dashboard/
 
 ## Acceptance Criteria
 
