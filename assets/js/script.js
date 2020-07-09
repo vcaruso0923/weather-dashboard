@@ -4,7 +4,7 @@ var hideContent = function () {
 hideContent();
 
 var getLatLng = function () {
-    var mapquestUrl = "https://www.mapquestapi.com/geocoding/v1/address?key=oVyE3Ks9NWAfklACf3tDZUgJ3ztKqzfp&location=" + cityName
+    var mapquestUrl = "https://www.mapquestapi.com/geocoding/v1/address?key=3TkMIOb1tYx0hKhAxGTho9sPNftrC59B&location=" + cityName
     fetch(mapquestUrl)
         .then(function (response) {
             if (response.ok) {
